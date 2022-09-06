@@ -21,7 +21,7 @@
             app:layout_constraintWidth_percent="0.9">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/category"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -39,9 +39,9 @@
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_go"
-                app:layout_constraintBottom_toBottomOf="@id/textView2"
+                app:layout_constraintBottom_toBottomOf="@id/category"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/textView2" />
+                app:layout_constraintTop_toTopOf="@id/category" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
