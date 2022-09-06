@@ -1,4 +1,4 @@
-package com.bootcamp.alkenotbored
+package com.example.notbored
 
 import org.junit.Test
 
