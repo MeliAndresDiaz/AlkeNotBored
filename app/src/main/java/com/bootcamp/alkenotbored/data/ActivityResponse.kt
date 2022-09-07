@@ -1,5 +1,7 @@
 package com.example.notbored
 
+import java.io.Serializable
+
 /**
 * Activity Response
 * Class to catch the JSON response from the API and convert it to my data class structure
@@ -13,7 +15,7 @@ data class ActivityResponse(
     val price: Double = 0.0,
     val type: String = "",
     val error: String = ""
-)
+): Serializable
 {
     val priceLevel: String
         get() = when {

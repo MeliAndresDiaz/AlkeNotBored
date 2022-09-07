@@ -14,6 +14,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+const val ACTIVITY_TYPE = "TYPE"
+const val ACTIVITY_PRICE = "PRICE"
+const val ACTIVITY_PARTICIPANTS = "PARTICIPANTS"
+const val ACTIVITY = "Activity"
 
 class CategoryActivity: AppCompatActivity() {
 
@@ -26,7 +30,6 @@ class CategoryActivity: AppCompatActivity() {
 
         setListView()
         setListViewListener()
-        getActivity(1, "Recreational", null)
     }
 
     private fun setListView() {
@@ -37,6 +40,7 @@ class CategoryActivity: AppCompatActivity() {
     private fun setListViewListener() {
         binding.listActivities.setOnItemClickListener { parent, _, position, _ ->
             Log.d("ListView", "Clicked ${parent.getItemAtPosition(position)}")
+            getActivity(1, parent.getItemAtPosition(position).toString().lowercase(), null)
         }
     }
 
@@ -63,7 +67,12 @@ class CategoryActivity: AppCompatActivity() {
                         /** TODO: Aplicar la logica para ir a la proxima pantalla con los datos requeridos
                          *  activity.type, activity.activity, activity.price, activity.participants
                          */
-                        val suggestionActivity = Intent(applicationContext, SuggestionActivity::class.java)
+                        val suggestionActivity = Intent(applicationContext, SuggestionActivity::class.java).apply {
+                            /*putExtra(ACTIVITY_TYPE, activity.type)
+                            putExtra(ACTIVITY_PRICE, activity.priceLevel)
+                            putExtra(ACTIVITY_PARTICIPANTS, activity.participants)*/
+                            putExtra(ACTIVITY, activity)
+                        }
                         startActivity(suggestionActivity)
 
                         Log.d("Retrofit", activity.toString())

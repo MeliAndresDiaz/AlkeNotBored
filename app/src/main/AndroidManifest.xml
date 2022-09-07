@@ -26,6 +26,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.TermsAndConditionsActivity"/>
+        <activity android:name=".view.CategoryActivity" />
+        <activity android:name=".view.SuggestionActivity" />
     </application>
 
 </manifest>
