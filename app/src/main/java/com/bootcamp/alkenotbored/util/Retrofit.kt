@@ -25,5 +25,4 @@ class Retrofit {
      * will be executed in an asynchronous thread.
      *
      */
-
 }

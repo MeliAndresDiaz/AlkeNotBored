@@ -31,6 +31,4 @@ class SuggestionActivity: AppCompatActivity() {
         Log.d("Suggestion", activityResponse.toString())
     }
 
-
-
 }
