@@ -3,6 +3,7 @@ package com.bootcamp.alkenotbored.util
 import android.app.Activity
 import android.util.Log
 import com.bootcamp.alkenotbored.R
+import com.bootcamp.alkenotbored.utils.Constants.BASE_URL
 import com.bootcamp.alkenotbored.utils.showAlert
 import com.example.notbored.APIService
 import kotlinx.coroutines.CoroutineScope
@@ -12,7 +13,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class Retrofit {
-    private val BASE_URL = "http://www.boredapi.com/api/"
 
     /**
      * This instance of Retrofit will have the base url of the endpoint, it will be in charge of
