@@ -1,12 +1,16 @@
 <resources>
     <string name="app_name">AlkeNotBored</string>
 
-    <!--Home Menu Region -->
+    <!-- Global Alert Message Region -->
+    <string name="global_alert_text_title">Something went wrong.</string>
+    <!-- end region -->
+
+    <!-- Home Menu Region -->
     <string name="item_menu_category">Category</string>
     <string name="item_menu__random_category">Random category</string>
     <!-- end region -->
 
-    <!--Home Screen Region -->
+    <!-- Home Screen Region -->
     <string name="home_text_title_app">Not Bored</string>
     <string name="home_text_title_participants">Participants</string>
     <string name="home_text_button_start">Start</string>
