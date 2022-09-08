@@ -21,7 +21,7 @@
             android:layout_marginEnd="10dp"
             android:text="@string/terms_and_conditions_text_title_bar"
             android:textColor="@color/black"
-            android:textSize="24dp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <ImageView
@@ -30,7 +30,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_exit" />
+            android:src="@drawable/ic_exit"
+            android:contentDescription="@string/app_name"/>
 
     </androidx.appcompat.widget.Toolbar>
 

@@ -32,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="58dp"
         android:src="@drawable/ic_baseline_person_24"
+        android:contentDescription="@string/app_name"
         app:layout_constraintStart_toStartOf="@id/activity_text_view"
         app:layout_constraintTop_toBottomOf="@id/activity_text_view" />
 
@@ -40,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:text="Participants"
+        android:text="@string/tv_participants"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/participants_image_view"
@@ -65,6 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
         android:src="@drawable/ic_baseline_attach_money_24"
+        android:contentDescription="@string/app_name"
         app:layout_constraintEnd_toEndOf="@+id/participants_image_view"
         app:layout_constraintStart_toStartOf="@id/participants_image_view"
         app:layout_constraintTop_toBottomOf="@id/participants_image_view" />
@@ -74,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:text="Price"
+        android:text="@string/tv_price"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/money_image_view"
@@ -99,6 +101,7 @@
         android:layout_marginTop="18dp"
         android:src="@drawable/ic_baseline_format_list_bulleted_24"
         android:visibility="gone"
+        android:contentDescription="@string/app_name"
         app:layout_constraintEnd_toEndOf="@+id/money_image_view"
         app:layout_constraintStart_toStartOf="@id/money_image_view"
         app:layout_constraintTop_toBottomOf="@id/money_image_view" />
@@ -108,7 +111,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:text="Category"
+        android:text="@string/tv_category"
         android:textSize="18sp"
         android:textStyle="bold"
         android:visibility="gone"
