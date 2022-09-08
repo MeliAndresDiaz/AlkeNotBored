@@ -8,6 +8,9 @@ import com.bootcamp.alkenotbored.R
 import com.bootcamp.alkenotbored.databinding.HomeActivityBinding
 import com.bootcamp.alkenotbored.utils.Constants.KEY_ACTIVITY_PRICE
 import com.bootcamp.alkenotbored.utils.Constants.KEY_NUMBER_PARTICIPANTS
+import com.bootcamp.alkenotbored.utils.Constants.MAX_NUMBER_PARTICIPANTS
+import com.bootcamp.alkenotbored.utils.Constants.MAX_PRICE
+import com.bootcamp.alkenotbored.utils.Constants.ZERO_VALUE
 import com.bootcamp.alkenotbored.utils.navigateTo
 import com.bootcamp.alkenotbored.view.categories.CategoryActivity
 import com.bootcamp.alkenotbored.view.termsAndConditions.TermsAndConditionsActivity
@@ -45,6 +48,16 @@ class HomeActivity : AppCompatActivity() {
     private fun observeEvent() {
         binding.homeFieldTextNumberOfParticipants.let {
             it.doAfterTextChanged { input ->
+                when {
+                    input.toString().isEmpty() -> it.error =
+                        getString(R.string.home_text_error_number_participants)
+                    input.toString().toInt() <= ZERO_VALUE -> it.error =
+                        getString(R.string.home_text_error_number_participants)
+                    input.toString().toInt() > MAX_NUMBER_PARTICIPANTS -> it.error =
+                        getString(R.string.home_text_error_number_participants)
+                    else -> it.error = null
+                }
+
                 viewModel.getNumberParticipants(isValidNumberParticipants(input.toString()))
                 viewModel.validateInformation()
             }
@@ -55,7 +68,7 @@ class HomeActivity : AppCompatActivity() {
                 when {
                     input.toString().isEmpty() -> it.error =
                         getString(R.string.home_text_error_activity_price)
-                    input.toString().toDouble() > 1.0 -> it.error =
+                    input.toString().toDouble() > MAX_PRICE -> it.error =
                         getString(R.string.home_text_error_activity_price)
                     else -> it.error = null
                 }
@@ -72,7 +85,7 @@ class HomeActivity : AppCompatActivity() {
     private fun isValidNumberParticipants(numberOfParticipants: String): Boolean {
         return when {
             numberOfParticipants.isEmpty() -> false
-            numberOfParticipants.toInt() <= 0 -> false
+            numberOfParticipants.toInt() <= ZERO_VALUE -> false
             else -> true
         }
     }
@@ -80,7 +93,7 @@ class HomeActivity : AppCompatActivity() {
     private fun isValidActivityPrice(activityPrice: String): Boolean {
         return when {
             activityPrice.isEmpty() -> false
-            activityPrice.toDouble() > 1.0 -> false
+            activityPrice.toDouble() > MAX_PRICE -> false
             else -> true
         }
     }

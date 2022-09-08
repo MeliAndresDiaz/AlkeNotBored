@@ -5,4 +5,7 @@ object Constants {
     const val KEY_NUMBER_PARTICIPANTS: String = "KEY_NUMBER_PARTICIPANTS"
     const val KEY_ACTIVITY_PRICE: String = "KEY_ACTIVITY_PRICE"
     const val KEY_ACTIVITY: String = "KEY_ACTIVITY"
+    const val ZERO_VALUE: Int = 0
+    const val MAX_PRICE: Double = 1.0
+    const val MAX_NUMBER_PARTICIPANTS: Int = 8
 }

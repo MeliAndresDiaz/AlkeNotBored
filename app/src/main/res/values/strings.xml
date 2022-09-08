@@ -16,6 +16,7 @@
     <string name="home_text_title_activity_price">Activity price</string>
     <string name="home_text_description_activity_price">Enter a number between 0.0 and 1.0</string>
     <string name="home_text_error_activity_price">Please put a number into the range</string>
+    <string name="home_text_error_number_participants">Please put a number between 1 and 8</string>
     <string name="home_text_button_start">Start</string>
     <string name="home_text_terms_and_conditions">Terms and conditions</string>
     <!-- end region -->

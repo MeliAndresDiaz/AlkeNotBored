@@ -1,13 +1,17 @@
 package com.bootcamp.alkenotbored.view.categories
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.bootcamp.alkenotbored.databinding.SuggestionActivityBinding
-import com.bootcamp.alkenotbored.utils.Constants.KEY_ACTIVITY
-import com.bootcamp.alkenotbored.utils.Constants.KEY_NUMBER_PARTICIPANTS
 import com.example.notbored.ActivityResponse
 
-class SuggestionActivity : AppCompatActivity() {
+const val ACTIVITY_TYPE = "TYPE"
+const val ACTIVITY_PRICE = "PRICE"
+const val ACTIVITY_PARTICIPANTS = "PARTICIPANTS"
+const val ACTIVITY = "Activity"
+
+class SuggestionActivity: AppCompatActivity() {
 
     private lateinit var binding: SuggestionActivityBinding
 
@@ -21,14 +25,15 @@ class SuggestionActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        binding.test.text = intent.getStringExtra(KEY_ACTIVITY)
-        val participants = intent.getIntExtra(KEY_NUMBER_PARTICIPANTS, 0)
+        /*val priceLevel = intent.getStringExtra(ACTIVITY_PRICE)
+        val type = intent.getStringExtra(ACTIVITY_TYPE)
+        val participants = intent.getIntExtra(ACTIVITY_PARTICIPANTS, 0)*/
 
-        val activityResponse = intent.getSerializableExtra(KEY_ACTIVITY) as ActivityResponse
-        binding.toolbarSuggestion.textView.text =
-            activityResponse.type.replaceFirstChar { it.uppercase() }
+        val activityResponse = intent.getSerializableExtra(ACTIVITY) as ActivityResponse
 
-        //Log.d("Suggestion", activityResponse.toString())
+        binding.toolbarSuggestion.textView.text = activityResponse.type.replaceFirstChar { it.uppercase() }
+
+        Log.d("Suggestion", activityResponse.toString())
     }
 
 }
