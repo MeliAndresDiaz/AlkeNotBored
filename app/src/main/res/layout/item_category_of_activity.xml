@@ -15,6 +15,7 @@
         android:layout_marginTop="16dp"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:textSize="20sp"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@id/icon_image_view"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,12 +27,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
+        android:contentDescription="@string/app_name"
         android:src="@drawable/ic_go"
         app:layout_constraintBottom_toBottomOf="@id/category"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/category"
-        app:layout_constraintTop_toTopOf="@id/category"
-        android:contentDescription="@string/app_name" />
+        app:layout_constraintTop_toTopOf="@id/category" />
 
     <View
         android:id="@+id/view"

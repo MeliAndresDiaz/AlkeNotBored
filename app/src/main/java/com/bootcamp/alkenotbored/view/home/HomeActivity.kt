@@ -1,11 +1,13 @@
 package com.bootcamp.alkenotbored.view.home
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import com.bootcamp.alkenotbored.R
 import com.bootcamp.alkenotbored.databinding.HomeActivityBinding
+import com.bootcamp.alkenotbored.utils.Constants.CHARACTER_DECIMAL
 import com.bootcamp.alkenotbored.utils.Constants.KEY_ACTIVITY_PRICE
 import com.bootcamp.alkenotbored.utils.Constants.KEY_NUMBER_PARTICIPANTS
 import com.bootcamp.alkenotbored.utils.Constants.MAX_NUMBER_PARTICIPANTS
@@ -24,6 +26,8 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = HomeActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        actionBar?.hide()
 
         setListeners()
         observeEvent()
@@ -36,9 +40,17 @@ class HomeActivity : AppCompatActivity() {
 
         binding.homeButtonStartApp.setOnClickListener {
             navigateTo<CategoryActivity> {
-                putExtra(KEY_NUMBER_PARTICIPANTS, binding.homeFieldTextNumberOfParticipants.text.toString())
+                putExtra(
+                    KEY_NUMBER_PARTICIPANTS,
+                    binding.homeFieldTextNumberOfParticipants.text.toString()
+                )
                 putExtra(KEY_ACTIVITY_PRICE, binding.homeFieldTextActivityPrice.text.toString())
             }
+        }
+
+        binding.homeCheckboxTermsAndConditions.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.isTermsAccepted.value = isChecked
+            viewModel.validateInformation()
         }
     }
 
@@ -65,6 +77,8 @@ class HomeActivity : AppCompatActivity() {
                 when {
                     input.toString().isEmpty() -> it.error =
                         getString(R.string.home_text_error_activity_price)
+                    input.toString() == CHARACTER_DECIMAL -> it.error =
+                        getString(R.string.home_text_error_activity_price)
                     input.toString().toDouble() > MAX_PRICE -> it.error =
                         getString(R.string.home_text_error_activity_price)
                     else -> it.error = null
@@ -90,6 +104,7 @@ class HomeActivity : AppCompatActivity() {
     private fun isValidActivityPrice(activityPrice: String): Boolean {
         return when {
             activityPrice.isEmpty() -> false
+            activityPrice == CHARACTER_DECIMAL -> false
             activityPrice.toDouble() > MAX_PRICE -> false
             else -> true
         }
