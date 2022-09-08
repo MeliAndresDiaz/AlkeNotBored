@@ -7,7 +7,7 @@
     android:background="#D0F0FF"
     android:fitsSystemWindows="true"
     android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
-    tools:context=".view.HomeActivity">
+    tools:context=".view.home.HomeActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="0dp"
@@ -15,8 +15,7 @@
         android:background="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/activities_menu" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/home_text_title_app"
@@ -36,8 +35,7 @@
         android:id="@+id/home_text_title_participants"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginHorizontal="24dp"
         android:text="@string/home_text_title_participants"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -46,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@id/home_text_title_app" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/home_input_text_number_of_participants"
+        android:id="@+id/home_layout_text_number_of_participants"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
@@ -56,11 +54,13 @@
         app:layout_constraintTop_toBottomOf="@id/home_text_title_participants">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/home_edit_text_number_of_participants"
+            android:id="@+id/home_field_text_number_of_participants"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
             android:background="@color/white"
             android:inputType="number"
+            android:maxLength="1"
             android:maxLines="1"
             android:padding="10dp"
             android:singleLine="true" />
@@ -68,6 +68,44 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/home_text_title_activity_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="10dp"
+        android:gravity="start"
+        android:text="@string/home_text_title_activity_price"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/home_layout_text_number_of_participants" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/home_layout_text_activity_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:elevation="4dp"
+        app:helperText="@string/home_text_description_activity_price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/home_text_title_activity_price">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/home_field_text_activity_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@color/white"
+            android:inputType="numberDecimal"
+            android:maxLength="3"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/home_button_start_app"
@@ -75,6 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
         android:backgroundTint="#008FFF"
+        android:enabled="false"
         android:text="@string/home_text_button_start"
         app:layout_constraintBottom_toTopOf="@id/home_text_title_terms_and_conditions"
         app:layout_constraintEnd_toEndOf="parent"
