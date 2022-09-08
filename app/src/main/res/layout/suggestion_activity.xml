@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:gravity="center"
+        android:textColor="@color/black"
         android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -31,8 +32,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="58dp"
-        android:src="@drawable/ic_baseline_person_24"
         android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_baseline_person_24"
         app:layout_constraintStart_toStartOf="@id/activity_text_view"
         app:layout_constraintTop_toBottomOf="@id/activity_text_view" />
 
@@ -42,6 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:text="@string/tv_participants"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/participants_image_view"
@@ -53,6 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/participants_text_view"
@@ -65,8 +68,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
-        android:src="@drawable/ic_baseline_attach_money_24"
         android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_baseline_attach_money_24"
         app:layout_constraintEnd_toEndOf="@+id/participants_image_view"
         app:layout_constraintStart_toStartOf="@id/participants_image_view"
         app:layout_constraintTop_toBottomOf="@id/participants_image_view" />
@@ -77,6 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:text="@string/tv_price"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/money_image_view"
@@ -87,6 +91,7 @@
         android:id="@+id/money_level_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/money_text_view"
@@ -99,9 +104,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
+        android:contentDescription="@string/app_name"
         android:src="@drawable/ic_baseline_format_list_bulleted_24"
         android:visibility="gone"
-        android:contentDescription="@string/app_name"
         app:layout_constraintEnd_toEndOf="@+id/money_image_view"
         app:layout_constraintStart_toStartOf="@id/money_image_view"
         app:layout_constraintTop_toBottomOf="@id/money_image_view" />
@@ -112,6 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:text="@string/tv_category"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         android:visibility="gone"
@@ -123,6 +129,7 @@
         android:id="@+id/type_description_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         android:visibility="gone"
@@ -146,14 +153,15 @@
 
     <RelativeLayout
         android:id="@+id/progress_bar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

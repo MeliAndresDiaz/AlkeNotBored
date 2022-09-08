@@ -2,10 +2,20 @@ package com.bootcamp.alkenotbored.view.categories
 
 import android.app.Activity
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bootcamp.alkenotbored.R
 import com.bootcamp.alkenotbored.databinding.CategoriesActivityBinding
 import com.bootcamp.alkenotbored.utils.*
+import com.bootcamp.alkenotbored.utils.Constants.CATEGORY_BUSYWORK
+import com.bootcamp.alkenotbored.utils.Constants.CATEGORY_CHARITY
+import com.bootcamp.alkenotbored.utils.Constants.CATEGORY_COOKING
+import com.bootcamp.alkenotbored.utils.Constants.CATEGORY_DIY
+import com.bootcamp.alkenotbored.utils.Constants.CATEGORY_EDUCATION
+import com.bootcamp.alkenotbored.utils.Constants.CATEGORY_MUSIC
+import com.bootcamp.alkenotbored.utils.Constants.CATEGORY_RECREATIONAL
+import com.bootcamp.alkenotbored.utils.Constants.CATEGORY_RELAXATION
+import com.bootcamp.alkenotbored.utils.Constants.CATEGORY_SOCIAL
 import com.bootcamp.alkenotbored.utils.Constants.KEY_ACTIVITY_NAME
 import com.bootcamp.alkenotbored.utils.Constants.KEY_ACTIVITY_PRICE
 import com.bootcamp.alkenotbored.utils.Constants.KEY_ACTIVITY_TYPE
@@ -26,6 +36,8 @@ class CategoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = CategoriesActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        actionBar?.hide()
 
         setListView()
         setListViewListener()
@@ -33,13 +45,14 @@ class CategoryActivity : AppCompatActivity() {
         getInputUser()
     }
 
-
+    // Function for get the data pass with Intent in HomeActivity
     private fun getInputUser() {
         val intent = intent
         numberOfParticipants = intent.getStringExtra(KEY_NUMBER_PARTICIPANTS).toString()
         activityPrice = intent.getStringExtra(KEY_ACTIVITY_PRICE).toString()
     }
 
+    // Function used for set a random activity
     private fun setRandomListener() {
         binding.toolbar.random.setOnClickListener {
             binding.progressBar.show()
@@ -53,6 +66,7 @@ class CategoryActivity : AppCompatActivity() {
         }
     }
 
+    // Listener for navigate to suggestion activity
     private fun setListViewListener() {
         binding.listActivities.setOnItemClickListener { parent, _, position, _ ->
             binding.progressBar.show()
@@ -65,17 +79,18 @@ class CategoryActivity : AppCompatActivity() {
         }
     }
 
+    // Function used for set categories on listView
     private fun setListView() {
         val categories = arrayOf(
-            "Education",
-            "Recreational",
-            "Social",
-            "Diy",
-            "Charity",
-            "Cooking",
-            "Relaxation",
-            "Music",
-            "Busywork"
+            CATEGORY_EDUCATION,
+            CATEGORY_RECREATIONAL,
+            CATEGORY_SOCIAL,
+            CATEGORY_DIY,
+            CATEGORY_CHARITY,
+            CATEGORY_COOKING,
+            CATEGORY_RELAXATION,
+            CATEGORY_MUSIC,
+            CATEGORY_BUSYWORK
         )
         binding.listActivities.adapter = CategoryListAdapter(this, categories)
     }
@@ -125,7 +140,7 @@ class CategoryActivity : AppCompatActivity() {
                     //Call failed or not successful. We show an error message
                     activity.showAlert(
                         R.string.global_alert_text_title,
-                        messageId = "An error has occurred with API. Please try again."
+                        messageId = getString(R.string.category_text_error_api)
                     )
                 }
             }

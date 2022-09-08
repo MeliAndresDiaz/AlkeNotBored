@@ -5,8 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D0F0FF"
-    android:fitsSystemWindows="true"
-    android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
     tools:context=".view.home.HomeActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -112,25 +110,33 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="120dp"
         android:backgroundTint="#008FFF"
         android:enabled="false"
         android:text="@string/home_text_button_start"
-        app:layout_constraintBottom_toTopOf="@id/home_text_title_terms_and_conditions"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/home_layout_text_activity_price" />
+
+    <CheckBox
+        android:id="@+id/home_checkbox_terms_and_conditions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/home_text_title_terms_and_conditions"
+        app:layout_constraintEnd_toStartOf="@id/home_text_title_terms_and_conditions"
+        app:layout_constraintTop_toTopOf="@id/home_text_title_terms_and_conditions" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/home_text_title_terms_and_conditions"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:clickable="true"
-        android:gravity="center|top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
         android:text="@string/home_text_terms_and_conditions"
         android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.14"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/home_button_start_app" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
