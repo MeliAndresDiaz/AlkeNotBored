@@ -8,6 +8,7 @@ import com.bootcamp.alkenotbored.databinding.CategoriesActivityBinding
 import com.bootcamp.alkenotbored.utils.Constants.KEY_ACTIVITY_NAME
 import com.bootcamp.alkenotbored.utils.Constants.KEY_ACTIVITY_PRICE
 import com.bootcamp.alkenotbored.utils.Constants.KEY_ACTIVITY_TYPE
+import com.bootcamp.alkenotbored.utils.Constants.KEY_FROM_RANDOM
 import com.bootcamp.alkenotbored.utils.Constants.KEY_NUMBER_PARTICIPANTS
 import com.bootcamp.alkenotbored.utils.initRetrofitRequest
 import com.bootcamp.alkenotbored.utils.navigateTo
@@ -103,6 +104,7 @@ class CategoryActivity : AppCompatActivity() {
                             putExtra(KEY_ACTIVITY_TYPE, response.type)
                             putExtra(KEY_NUMBER_PARTICIPANTS, numberOfParticipants)
                             putExtra(KEY_ACTIVITY_PRICE, activityPrice)
+                            putExtra(KEY_FROM_RANDOM, false)
                         }
                     }
                 } else {

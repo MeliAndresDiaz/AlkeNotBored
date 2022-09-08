@@ -2,9 +2,14 @@ package com.bootcamp.alkenotbored.view.categories
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bootcamp.alkenotbored.databinding.SuggestionActivityBinding
 import com.bootcamp.alkenotbored.utils.Constants
+import com.bootcamp.alkenotbored.utils.Constants.KEY_FROM_RANDOM
+import com.bootcamp.alkenotbored.utils.getPriceLevel
+import com.bootcamp.alkenotbored.utils.hide
+import com.bootcamp.alkenotbored.utils.show
 import com.example.notbored.ActivityResponse
 
 class SuggestionActivity: AppCompatActivity() {
@@ -14,6 +19,7 @@ class SuggestionActivity: AppCompatActivity() {
     private lateinit var activityPrice: String
     private lateinit var activityName:String
     private lateinit var activityType:String
+    private var fromRandom: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,9 +29,21 @@ class SuggestionActivity: AppCompatActivity() {
         getUserInputAndActivityData()
         setListeners()
         setToolbarTitle()
+        setActivityDetails()
     }
 
+    private fun setActivityDetails() {
+        with(binding){
+            activityTextView.text = activityName
+            numberParticipantsTextView.text = numberOfParticipants
+            moneyLevelTextView.text = getPriceLevel(activityPrice)
+            typeDescriptionTextView.text = activityType.replaceFirstChar { it.uppercase() }
 
+            if (fromRandom) typeImageView.show() else typeImageView.hide()
+            if (fromRandom) typeDescriptionTextView.show() else typeDescriptionTextView.hide()
+            if (fromRandom) typeTextView.show() else typeTextView.hide()
+        }
+    }
 
     private fun setToolbarTitle() {
         binding.toolbarSuggestion.textView.text = activityType.replaceFirstChar { it.uppercase() }
@@ -36,6 +54,7 @@ class SuggestionActivity: AppCompatActivity() {
         activityPrice = intent.getStringExtra(Constants.KEY_ACTIVITY_PRICE).toString()
         activityName = intent.getStringExtra(Constants.KEY_ACTIVITY_NAME).toString()
         activityType = intent.getStringExtra(Constants.KEY_ACTIVITY_TYPE).toString()
+        fromRandom = intent.extras?.getBoolean(KEY_FROM_RANDOM) == true
     }
 
     private fun setListeners(){
