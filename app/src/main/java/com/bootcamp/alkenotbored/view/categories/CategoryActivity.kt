@@ -5,14 +5,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bootcamp.alkenotbored.R
 import com.bootcamp.alkenotbored.databinding.CategoriesActivityBinding
+import com.bootcamp.alkenotbored.utils.*
 import com.bootcamp.alkenotbored.utils.Constants.KEY_ACTIVITY_NAME
 import com.bootcamp.alkenotbored.utils.Constants.KEY_ACTIVITY_PRICE
 import com.bootcamp.alkenotbored.utils.Constants.KEY_ACTIVITY_TYPE
 import com.bootcamp.alkenotbored.utils.Constants.KEY_FROM_RANDOM
 import com.bootcamp.alkenotbored.utils.Constants.KEY_NUMBER_PARTICIPANTS
-import com.bootcamp.alkenotbored.utils.initRetrofitRequest
-import com.bootcamp.alkenotbored.utils.navigateTo
-import com.bootcamp.alkenotbored.utils.showAlert
 import com.example.notbored.APIService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -37,6 +35,7 @@ class CategoryActivity : AppCompatActivity() {
 
     private fun setRandomListener() {
         binding.toolbar.random.setOnClickListener {
+            binding.progressBar.show()
             getRetrofitResponse(
                 participants = numberOfParticipants.toInt(),
                 type = null,
@@ -70,6 +69,7 @@ class CategoryActivity : AppCompatActivity() {
 
     private fun setListViewListener() {
         binding.listActivities.setOnItemClickListener { parent, _, position, _ ->
+            binding.progressBar.show()
             getRetrofitResponse(
                 participants = numberOfParticipants.toInt(),
                 type = parent.getItemAtPosition(position).toString().lowercase(),
@@ -101,9 +101,10 @@ class CategoryActivity : AppCompatActivity() {
             val activityResponse = call.body()
 
             activity.runOnUiThread {
+                binding.progressBar.hide()
+
                 if (call.isSuccessful) {
                     activityResponse?.let { response ->
-
                         //If no activity is available, show an error message
                         if (response.error.isNotEmpty()) {
                             activity.showAlert(
