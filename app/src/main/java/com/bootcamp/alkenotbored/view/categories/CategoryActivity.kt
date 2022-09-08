@@ -61,7 +61,7 @@ class CategoryActivity : AppCompatActivity() {
             Log.d("ListView", "Clicked ${parent.getItemAtPosition(position)}")
             getRetrofitResponse(
                 numberOfParticipants.toInt(),
-                parent.getItemAtPosition(position).toString(),
+                parent.getItemAtPosition(position).toString().lowercase(),
                 activityPrice.toDouble(),
                 this@CategoryActivity
             )
@@ -107,14 +107,15 @@ class CategoryActivity : AppCompatActivity() {
                                 R.string.global_alert_text_title,
                                 messageId = response.error
                             )
+                        } else {
+                            navigateTo<SuggestionActivity> {
+                                putExtra(
+                                    Constants.KEY_ACTIVITY,
+                                    response
+                                )
+                            }
+                            Log.d("Retrofit", response.toString())
                         }
-                        navigateTo<SuggestionActivity> {
-                            putExtra(
-                                Constants.KEY_ACTIVITY,
-                                response.activity
-                            )
-                        }
-                        Log.d("Retrofit", response.toString())
                     }
                 } else {
                     //Call failed or not successful. We show an error message

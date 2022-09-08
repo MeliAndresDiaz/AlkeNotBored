@@ -21,8 +21,8 @@ data class ActivityResponse(
         get() = when {
             price == 0.0 -> "Free"
             price > 0.0 && price < 0.3 -> "Low"
-            price > 0.3 && price < 0.6 -> "Medium"
-            price > 0.6 -> "High"
+            price >= 0.3 && price < 0.6 -> "Medium"
+            price >= 0.6 -> "High"
             else -> "Unknown"
         }
 }
