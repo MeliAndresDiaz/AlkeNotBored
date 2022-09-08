@@ -46,7 +46,7 @@ class SuggestionActivity: AppCompatActivity() {
     }
 
     private fun setToolbarTitle() {
-        binding.toolbarSuggestion.textView.text = activityType.replaceFirstChar { it.uppercase() }
+        binding.toolbarSuggestion.textView.text = if (fromRandom) "Random" else activityType.replaceFirstChar { it.uppercase() }
     }
 
     private fun getUserInputAndActivityData() {

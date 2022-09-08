@@ -31,7 +31,20 @@ class CategoryActivity : AppCompatActivity() {
 
         setListView()
         setListViewListener()
+        setRandomListener()
         getInputUser()
+    }
+
+    private fun setRandomListener() {
+        binding.toolbar.random.setOnClickListener {
+            getRetrofitResponse(
+                participants = numberOfParticipants.toInt(),
+                type = null,
+                price = activityPrice.toDouble().toString(),
+                activity = this@CategoryActivity,
+                random = true
+            )
+        }
     }
 
     private fun getInputUser() {
@@ -79,7 +92,8 @@ class CategoryActivity : AppCompatActivity() {
         participants: Int? = null,
         type: String? = null,
         price: String? = null,
-        activity: Activity
+        activity: Activity,
+        random:Boolean = false
     ) {
         CoroutineScope(Dispatchers.IO).launch {
             val call = initRetrofitRequest().create(APIService::class.java)
@@ -104,7 +118,7 @@ class CategoryActivity : AppCompatActivity() {
                             putExtra(KEY_ACTIVITY_TYPE, response.type)
                             putExtra(KEY_NUMBER_PARTICIPANTS, numberOfParticipants)
                             putExtra(KEY_ACTIVITY_PRICE, activityPrice)
-                            putExtra(KEY_FROM_RANDOM, false)
+                            putExtra(KEY_FROM_RANDOM, random)
                         }
                     }
                 } else {
