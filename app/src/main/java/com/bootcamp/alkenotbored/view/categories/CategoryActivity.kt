@@ -33,6 +33,13 @@ class CategoryActivity : AppCompatActivity() {
         getInputUser()
     }
 
+
+    private fun getInputUser() {
+        val intent = intent
+        numberOfParticipants = intent.getStringExtra(KEY_NUMBER_PARTICIPANTS).toString()
+        activityPrice = intent.getStringExtra(KEY_ACTIVITY_PRICE).toString()
+    }
+
     private fun setRandomListener() {
         binding.toolbar.random.setOnClickListener {
             binding.progressBar.show()
@@ -46,10 +53,16 @@ class CategoryActivity : AppCompatActivity() {
         }
     }
 
-    private fun getInputUser() {
-        val intent = intent
-        numberOfParticipants = intent.getStringExtra(KEY_NUMBER_PARTICIPANTS).toString()
-        activityPrice = intent.getStringExtra(KEY_ACTIVITY_PRICE).toString()
+    private fun setListViewListener() {
+        binding.listActivities.setOnItemClickListener { parent, _, position, _ ->
+            binding.progressBar.show()
+            getRetrofitResponse(
+                participants = numberOfParticipants.toInt(),
+                type = parent.getItemAtPosition(position).toString().lowercase(),
+                price = activityPrice.toDouble().toString(),
+                activity = this@CategoryActivity
+            )
+        }
     }
 
     private fun setListView() {
@@ -67,33 +80,19 @@ class CategoryActivity : AppCompatActivity() {
         binding.listActivities.adapter = CategoryListAdapter(this, categories)
     }
 
-    private fun setListViewListener() {
-        binding.listActivities.setOnItemClickListener { parent, _, position, _ ->
-            binding.progressBar.show()
-            getRetrofitResponse(
-                participants = numberOfParticipants.toInt(),
-                type = parent.getItemAtPosition(position).toString().lowercase(),
-                price = activityPrice.toDouble().toString(),
-                activity = this@CategoryActivity
-            )
-        }
-    }
-
     /**
      * This function is where we will do the query to the API. This query must be made in an asynchronous thread,
      * for that we will use CoroutineScope(Dispatchers.IO).launch{} and everything that is between braces
      * will be executed in an asynchronous thread.
      *
      * As we're going to show the result visually, we must execute it in the UI thread. For that, we use runOnUiThread
-     *
-     *
-     */
+     **/
     private fun getRetrofitResponse(
         participants: Int? = null,
         type: String? = null,
         price: String? = null,
         activity: Activity,
-        random:Boolean = false
+        random: Boolean = false
     ) {
         CoroutineScope(Dispatchers.IO).launch {
             val call = initRetrofitRequest().create(APIService::class.java)
