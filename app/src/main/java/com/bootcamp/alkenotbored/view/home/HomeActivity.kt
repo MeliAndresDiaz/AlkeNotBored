@@ -36,10 +36,7 @@ class HomeActivity : AppCompatActivity() {
 
         binding.homeButtonStartApp.setOnClickListener {
             navigateTo<CategoryActivity> {
-                putExtra(
-                    KEY_NUMBER_PARTICIPANTS,
-                    binding.homeFieldTextNumberOfParticipants.text.toString()
-                )
+                putExtra(KEY_NUMBER_PARTICIPANTS, binding.homeFieldTextNumberOfParticipants.text.toString())
                 putExtra(KEY_ACTIVITY_PRICE, binding.homeFieldTextActivityPrice.text.toString())
             }
         }

@@ -19,6 +19,6 @@ interface APIService {
         @Url url: String,
         @Query("participants") participants: Int?,
         @Query("type") type: String?,
-        @Query("price") price: Double?
+        @Query("price") price: String?
     ): Response<ActivityResponse>
 }
