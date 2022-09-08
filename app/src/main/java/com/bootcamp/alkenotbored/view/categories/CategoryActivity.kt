@@ -6,7 +6,6 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.bootcamp.alkenotbored.R
 import com.bootcamp.alkenotbored.databinding.CategoriesActivityBinding
-import com.bootcamp.alkenotbored.utils.CallService
 import com.bootcamp.alkenotbored.utils.Constants
 import com.bootcamp.alkenotbored.utils.Constants.KEY_ACTIVITY_PRICE
 import com.bootcamp.alkenotbored.utils.Constants.KEY_NUMBER_PARTICIPANTS
@@ -16,6 +15,8 @@ import com.example.notbored.APIService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class CategoryActivity : AppCompatActivity() {
 
@@ -68,12 +69,23 @@ class CategoryActivity : AppCompatActivity() {
     }
 
     /**
+     * This instance of Retrofit will have the base url of the endpoint, it will be in charge of
+     * converting the JSON to ActivityResponse and will have all the configuration to make the API call.
+     */
+    private fun initRetrofitRequest(): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(Constants.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    /**
      * This function is where we will do the query to the API. This query must be made in an asynchronous thread,
      * for that we will use CoroutineScope(Dispatchers.IO).launch{} and everything that is between braces
      * will be executed in an asynchronous thread.
      */
 
-    fun getRetrofitResponse(
+    private fun getRetrofitResponse(
         participants: Int? = null,
         type: String? = null,
         price: Double? = null,
@@ -81,7 +93,7 @@ class CategoryActivity : AppCompatActivity() {
     ) {
         CoroutineScope(Dispatchers.IO).launch {
             //API call and body response
-            val call = CallService().initRetrofitRequest().create(APIService::class.java)
+            val call = initRetrofitRequest().create(APIService::class.java)
                 .getActivity("activity/", participants, type, price)
             val activityResponse = call.body()
 
