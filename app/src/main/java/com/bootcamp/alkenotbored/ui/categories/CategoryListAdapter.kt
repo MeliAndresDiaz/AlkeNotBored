@@ -1,4 +1,4 @@
-package com.bootcamp.alkenotbored.view.categories
+package com.bootcamp.alkenotbored.ui.categories
 
 import android.annotation.SuppressLint
 import android.app.Activity

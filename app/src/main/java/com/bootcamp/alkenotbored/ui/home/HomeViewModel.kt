@@ -1,4 +1,4 @@
-package com.bootcamp.alkenotbored.view.home
+package com.bootcamp.alkenotbored.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,4 +1,4 @@
-package com.bootcamp.alkenotbored.view.categories
+package com.bootcamp.alkenotbored.ui.categories
 
 import android.app.Activity
 import android.os.Bundle

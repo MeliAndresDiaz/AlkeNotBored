@@ -1,4 +1,4 @@
-package com.bootcamp.alkenotbored.view.home
+package com.bootcamp.alkenotbored.ui.home
 
 import android.os.Bundle
 import android.view.View
@@ -14,8 +14,8 @@ import com.bootcamp.alkenotbored.utils.Constants.MAX_NUMBER_PARTICIPANTS
 import com.bootcamp.alkenotbored.utils.Constants.MAX_PRICE
 import com.bootcamp.alkenotbored.utils.Constants.ZERO_VALUE
 import com.bootcamp.alkenotbored.utils.navigateTo
-import com.bootcamp.alkenotbored.view.categories.CategoryActivity
-import com.bootcamp.alkenotbored.view.termsAndConditions.TermsAndConditionsActivity
+import com.bootcamp.alkenotbored.ui.categories.CategoryActivity
+import com.bootcamp.alkenotbored.ui.termsAndConditions.TermsAndConditionsActivity
 
 class HomeActivity : AppCompatActivity() {
 

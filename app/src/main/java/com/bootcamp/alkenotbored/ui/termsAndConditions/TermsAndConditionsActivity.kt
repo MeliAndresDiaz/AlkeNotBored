@@ -1,11 +1,11 @@
-package com.bootcamp.alkenotbored.view.termsAndConditions
+package com.bootcamp.alkenotbored.ui.termsAndConditions
 
 import android.app.Activity
 import android.os.Bundle
 import android.view.View
 import com.bootcamp.alkenotbored.databinding.TermsAndConditionsActivityBinding
 import com.bootcamp.alkenotbored.utils.navigateTo
-import com.bootcamp.alkenotbored.view.home.HomeActivity
+import com.bootcamp.alkenotbored.ui.home.HomeActivity
 
 class TermsAndConditionsActivity : Activity() {
 

@@ -17,16 +17,16 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".view.home.HomeActivity"
+            android:name=".ui.home.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.termsAndConditions.TermsAndConditionsActivity" />
-        <activity android:name=".view.categories.CategoryActivity" />
-        <activity android:name=".view.categories.SuggestionActivity" />
+        <activity android:name=".ui.termsAndConditions.TermsAndConditionsActivity" />
+        <activity android:name=".ui.categories.CategoryActivity" />
+        <activity android:name=".ui.categories.SuggestionActivity" />
     </application>
 
 </manifest>
