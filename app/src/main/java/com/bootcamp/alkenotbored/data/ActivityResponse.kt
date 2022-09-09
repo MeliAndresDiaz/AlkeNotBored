@@ -1,4 +1,4 @@
-package com.example.notbored
+package com.bootcamp.alkenotbored.data
 
 /**
  * Activity Response

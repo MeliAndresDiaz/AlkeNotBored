@@ -21,7 +21,7 @@ import com.bootcamp.alkenotbored.utils.Constants.KEY_ACTIVITY_PRICE
 import com.bootcamp.alkenotbored.utils.Constants.KEY_ACTIVITY_TYPE
 import com.bootcamp.alkenotbored.utils.Constants.KEY_FROM_RANDOM
 import com.bootcamp.alkenotbored.utils.Constants.KEY_NUMBER_PARTICIPANTS
-import com.example.notbored.APIService
+import com.bootcamp.alkenotbored.data.APIService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

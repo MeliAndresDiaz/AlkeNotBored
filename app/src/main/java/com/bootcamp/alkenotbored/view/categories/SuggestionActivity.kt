@@ -8,7 +8,7 @@ import com.bootcamp.alkenotbored.R
 import com.bootcamp.alkenotbored.databinding.SuggestionActivityBinding
 import com.bootcamp.alkenotbored.utils.*
 import com.bootcamp.alkenotbored.utils.Constants.KEY_FROM_RANDOM
-import com.example.notbored.APIService
+import com.bootcamp.alkenotbored.data.APIService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
